@@ -287,38 +287,33 @@ export const EnhancedProjects: React.FC = () => {
               >
                 <Card className="bg-gradient-card border-border/50 hover:border-primary/30 transition-all duration-500 hover:shadow-glass group h-full overflow-hidden">
                   <CardContent className="p-0">
-                    {/* Project Image/Header */}
-                    <div className="relative h-48 bg-gradient-subtle overflow-hidden">
+                    {/* Project Header Row: Icon, Category, Status */}
+                    <div className="relative bg-gradient-subtle overflow-hidden">
                       <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20" />
-                      <motion.div
-                        className="absolute inset-0 flex items-center justify-center"
-                        whileHover={{ scale: 1.1, rotate: 5 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        <Icon className="w-16 h-16 text-primary" />
-                      </motion.div>
-                      
-                      {/* Status Badge */}
-                      <div className="absolute top-4 right-4">
+                      <div className="relative px-4 py-3 md:px-5 md:py-4 flex items-center justify-between">
+                        <div className="flex items-center gap-3">
+                          <motion.div
+                            whileHover={{ scale: 1.05, rotate: 2 }}
+                            transition={{ duration: 0.2 }}
+                          >
+                            <Icon className="w-6 h-6 md:w-7 md:h-7 text-primary" />
+                          </motion.div>
+                          <Badge className={`${categoryColors[project.category]} capitalize`}>
+                            {project.category}
+                          </Badge>
+                        </div>
                         <Badge className={`${statusColors[project.status]}`}>
                           {project.status}
-                        </Badge>
-                      </div>
-
-                      {/* Category Badge */}
-                      <div className="absolute top-4 left-4">
-                        <Badge className={`${categoryColors[project.category]} capitalize`}>
-                          {project.category}
                         </Badge>
                       </div>
                     </div>
 
                     {/* Project Content */}
-                    <div className="p-6 space-y-4">
+                    <div className="p-4 space-y-3">
                       {/* Project Header */}
-                      <div className="space-y-2">
+                      <div className="space-y-1.5">
                         <div className="flex items-center justify-between">
-                          <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+                          <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
                             {project.title}
                           </h3>
                           <div className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -326,13 +321,13 @@ export const EnhancedProjects: React.FC = () => {
                             <span>{project.year}</span>
                           </div>
                         </div>
-                        <p className="text-sm font-medium text-accent">
+                        <p className="text-[13px] font-medium text-accent">
                           {project.impact}
                         </p>
                       </div>
 
                       {/* Description */}
-                      <p className="text-muted-foreground text-sm leading-relaxed">
+                      <p className="text-muted-foreground text-sm leading-snug">
                         {isExpanded ? project.longDescription : project.description}
                       </p>
 
