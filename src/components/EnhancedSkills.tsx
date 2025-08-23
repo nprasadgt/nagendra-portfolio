@@ -39,7 +39,7 @@ const skills: Skill[] = [
   },
   {
     name: 'Rust',
-    level: 50,
+    level: 40,
     category: 'backend',
     icon: Settings,
     color: 'text-orange-500',
@@ -295,63 +295,65 @@ export const EnhancedSkills: React.FC = () => {
                 variants={itemVariants}
                 onHoverStart={() => setHoveredSkill(skill.name)}
                 onHoverEnd={() => setHoveredSkill(null)}
-                whileHover={{ scale: 1.05, y: -5 }}
+                whileHover={{ scale: 1.03, y: -3 }}
                 whileTap={{ scale: 0.98 }}
                 layout
               >
-                <Card className="bg-gradient-card border-border/30 hover:border-primary/20 transition-all duration-300 hover:shadow-glass h-full">
-                  <CardContent className="p-6 space-y-4">
+                <Card className="bg-gradient-card border-border/30 hover:border-primary/20 transition-all duration-300 hover:shadow-glass rounded-xl h-full">
+                  <CardContent className="p-4 space-y-4">
                     {/* Skill Header */}
-                    <div className="flex items-center gap-3">
-                      <motion.div
-                        className={`p-2 rounded-lg bg-primary/10 ${skill.color}`}
-                        animate={{
-                          scale: isHovered ? 1.1 : 1,
-                          rotate: isHovered ? 5 : 0,
-                        }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        <Icon className="w-5 h-5" />
-                      </motion.div>
-                      <div className="flex-1">
-                        <h3 className="font-bold text-foreground">{skill.name}</h3>
-                        <Badge 
-                          variant="outline" 
-                          className={`text-xs ${categoryColors[skill.category]}`}
+                    <div className="flex items-start gap-3">
+                      {/* Left column: icon + percent below */}
+                      <div className="flex flex-col items-start gap-1">
+                        <motion.div
+                          className={`p-2 rounded-lg bg-primary/10 ring-1 ring-border/30 ${skill.color}`}
+                          animate={{
+                            scale: isHovered ? 1.06 : 1,
+                            rotate: isHovered ? 4 : 0,
+                          }}
+                          transition={{ duration: 0.2 }}
                         >
+                          <Icon className="w-7 h-7" />
+                        </motion.div>
+                      </div>
+                      {/* Right column: name + badge */}
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-semibold text-foreground text-lg leading-tight truncate">{skill.name}</h3>
+                        <Badge variant="outline" className={`${categoryColors[skill.category]} text-[12px] py-0.5` }>
                           {categoryNames[skill.category]}
                         </Badge>
                       </div>
-                      <div className="text-right">
-                        <motion.span 
-                          className="text-2xl font-bold text-primary"
-                          animate={{
-                            scale: isHovered ? 1.1 : 1,
-                          }}
-                        >
-                          {skill.level}%
-                        </motion.span>
-                      </div>
                     </div>
 
-                    {/* Proficiency Label + Single Progress Bar */}
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between text-xs">
+                    {/* Proficiency Label + Progress Bar (compact) */}
+                    <div className="space-y-1.5">
+                      <div className="flex items-center justify-between text-[11px]">
                         <span className="text-muted-foreground">
                           {getProficiencyLabel(skill.level)}
                         </span>
                         <span className="text-primary font-medium">{skill.level}%</span>
                       </div>
                       <motion.div
-                        className="w-full bg-muted rounded-full h-2 overflow-hidden"
+                        className="relative w-full bg-muted rounded-full h-2 overflow-visible"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.25 + index * 0.08 }}
                       >
                         <motion.div
-                          className="h-full bg-gradient-primary"
+                          className="h-full bg-gradient-primary rounded-full"
                           initial={{ width: 0 }}
                           animate={{ width: inView ? `${skill.level}%` : 0 }}
+                          transition={{ 
+                            duration: 1.2, 
+                            delay: 0.35 + index * 0.08,
+                            ease: "easeOut"
+                          }}
+                        />
+                        {/* Compact knob */}
+                        <motion.div
+                          className="absolute top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-card border border-primary/70 shadow-sm"
+                          initial={{ left: '0%' }}
+                          animate={{ left: inView ? `${skill.level}%` : '0%' }}
                           transition={{ 
                             duration: 1.2, 
                             delay: 0.35 + index * 0.08,
@@ -363,16 +365,17 @@ export const EnhancedSkills: React.FC = () => {
 
                     {/* Technologies */}
                     <div className="space-y-2">
-                      <p className="text-sm font-medium text-muted-foreground">Technologies:</p>
+                      <p className="text-xs font-medium text-muted-foreground">Technologies:</p>
                       <div className="flex flex-wrap gap-1">
                         {skill.technologies.map((tech, idx) => (
                           <motion.span
                             key={idx}
-                            className="px-2 py-1 bg-muted text-muted-foreground text-xs rounded"
+                            className="px-2 py-1 bg-muted/80 text-muted-foreground text-[11px] rounded-md border border-border/40"
                             whileHover={{ 
                               scale: 1.05,
-                              backgroundColor: 'hsl(var(--primary) / 0.1)',
-                              color: 'hsl(var(--primary))'
+                              backgroundColor: 'hsl(var(--primary) / 0.08)',
+                              color: 'hsl(var(--primary))',
+                              borderColor: 'hsl(var(--primary) / 0.3)'
                             }}
                             whileTap={{ scale: 0.95 }}
                           >
@@ -391,13 +394,13 @@ export const EnhancedSkills: React.FC = () => {
         {/* Summary Stats */}
         <motion.div 
           variants={itemVariants}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12"
+          className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-12 justify-center justify-items-center"
         >
           {[
             { label: 'Years Experience', value: '7+', icon: Zap },
-            { label: 'Technologies', value: '25+', icon: Layers },
-            { label: 'Projects Completed', value: '50+', icon: BarChart3 },
-            { label: 'Certifications', value: '10+', icon: Shield }
+            { label: 'Projects Completed', value: '8+', icon: BarChart3 },
+            { label: 'Technologies', value: '15+', icon: Layers },
+            // { label: 'Certifications', value: '10+', icon: Shield }
           ].map((stat, index) => {
             const Icon = stat.icon;
             return (
