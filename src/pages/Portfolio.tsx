@@ -4,11 +4,11 @@ import { ParallaxProvider } from 'react-scroll-parallax';
 import { Navigation } from '@/components/Navigation';
 import { Hero } from '@/components/Hero';
 import { About } from '@/components/About';
-import { Timeline } from '@/components/Timeline';
-import { Skills } from '@/components/Skills';
-import { Projects } from '@/components/Projects';
+import { HorizontalTimeline } from '@/components/HorizontalTimeline';
+import { EnhancedSkills } from '@/components/EnhancedSkills';
+import { EnhancedProjects } from '@/components/EnhancedProjects';
 import { Education } from '@/components/Education';
-import { Contact } from '@/components/Contact';
+import { EnhancedContact } from '@/components/EnhancedContact';
 
 const Portfolio: React.FC = () => {
   const [activeSection, setActiveSection] = useState('home');
@@ -70,17 +70,17 @@ const Portfolio: React.FC = () => {
 
           {/* Timeline Section */}
           <section id="timeline" className="relative bg-gradient-subtle">
-            <Timeline />
+            <HorizontalTimeline />
           </section>
 
           {/* Skills Section */}
           <section id="skills" className="relative">
-            <Skills />
+            <EnhancedSkills />
           </section>
 
           {/* Projects Section */}
           <section id="projects" className="relative bg-gradient-subtle">
-            <Projects />
+            <EnhancedProjects />
           </section>
 
           {/* Education Section */}
@@ -90,7 +90,7 @@ const Portfolio: React.FC = () => {
 
           {/* Contact Section */}
           <section id="contact" className="relative bg-gradient-subtle">
-            <Contact />
+            <EnhancedContact />
           </section>
         </main>
 
