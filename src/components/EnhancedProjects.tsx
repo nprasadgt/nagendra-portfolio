@@ -231,7 +231,7 @@ export const EnhancedProjects: React.FC = () => {
               Projects
             </span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground whitespace-nowrap max-w-2xl mx-auto">
             A showcase of impactful projects that demonstrate technical expertise and problem-solving capabilities
           </p>
           <div className="w-24 h-1 bg-gradient-primary mx-auto rounded-full mt-6" />

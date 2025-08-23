@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Home, User, Clock, Code, FolderOpen, GraduationCap, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { AnimatePresence, motion } from 'framer-motion';
+import { Clock, Code, FolderOpen, GraduationCap, Home, Mail, Menu, User, X } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
 
 interface NavigationProps {
   activeSection: string;
@@ -56,7 +56,7 @@ export const Navigation: React.FC<NavigationProps> = ({ activeSection, onSection
             whileTap={{ scale: 0.95 }}
           >
             <span className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-              NPG
+              NagendraPrasad
             </span>
           </motion.div>
 

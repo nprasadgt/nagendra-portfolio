@@ -1,6 +1,6 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { motion } from 'framer-motion';
-import { Award, Cloud, Code, Palette, Server, Users } from 'lucide-react';
+import { Award, Brain, Cloud, Code, Database, Palette, Server, Users } from 'lucide-react';
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
 
@@ -11,9 +11,19 @@ const highlights = [
     description: 'Extensive experience across multiple domains and technologies',
   },
   {
+    icon: Brain,
+    title: 'AI‑Oriented Developer',
+    description: 'Integrating LLMs and AI workflows to automate, and improve delivery',
+  },
+  {
     icon: Server,
     title: 'Backend Specialist',
-    description: 'Expert in Python, FastAPI, Rust, and database technologies',
+    description: 'Expert in Python, Django, FastAPI, React, NextJs, Rust, and DB technologies',
+  },
+  {
+    icon: Database,
+    title: 'Database Management',
+    description: 'Data modeling, performance tuning, migrations, and scaling (PSQL, MySQL)',
   },
   {
     icon: Code,
@@ -23,7 +33,7 @@ const highlights = [
   {
     icon: Cloud,
     title: 'DevOps Expert',
-    description: 'AWS, Docker, Kubernetes, and serverless architecture',
+    description: 'GCP, AWS, EC2, Compute Engine, Docker, Kubernetes, and serverless architecture',
   },
   {
     icon: Palette,
@@ -33,8 +43,9 @@ const highlights = [
   {
     icon: Users,
     title: 'Team Leader',
-    description: 'Technical interviewer and mentor for junior engineers',
+    description: 'Technical Architect and Lead for 7 member team',
   },
+  
 ];
 
 export const About: React.FC = () => {
@@ -137,11 +148,11 @@ export const About: React.FC = () => {
               className="flex flex-wrap gap-3"
               variants={itemVariants}
             >
-              {['Python', 'TypeScript', 'React', 'GCP', 'Docker', 'FastAPI'].map((tech, index) => (
+              {['Python', 'Django', 'FastAPI', 'PSQL', 'Docker', 'GCP', 'AWS', 'React'].map((tech, index) => (
                 <motion.span
                   key={tech}
                   whileHover={{ scale: 1.05 }}
-                  className="px-4 py-2 rounded-full bg-muted/50 text-sm font-medium text-muted-foreground border border-border/50"
+                  className="px-2 py-2 rounded-full bg-muted/50 text-sm font-medium text-muted-foreground border border-border/50"
                 >
                   {tech}
                 </motion.span>

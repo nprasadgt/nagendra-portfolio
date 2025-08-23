@@ -10,7 +10,6 @@ import {
   Code,
   GraduationCap,
   MapPin,
-  Play,
   Settings
 } from 'lucide-react';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
@@ -34,7 +33,7 @@ const timelineEvents: TimelineEvent[] = [
     id: 'current',
     date: 'Jun 2024 – Present',
     title: 'Technical Specialist',
-    company: 'WarpDrive Tech Works',
+    company: 'WarpDrive Tech Works LLP',
     location: 'Bengaluru, Karnataka, India',
     type: 'work',
     icon: Building2,
@@ -45,7 +44,7 @@ const timelineEvents: TimelineEvent[] = [
       'Led cloud & DevOps efforts to improve reliability and delivery',
       'Integrated AI into development workflows to accelerate delivery',
     ],
-    technologies: ['Python', 'Django', 'FastAPI', 'React', 'PostgreSQL', 'GCP', 'Cloud', 'DevOps']
+    technologies: ['Python', 'Django', 'React', 'PostgreSQL', 'GCP', 'CI/CD', 'DevOps']
   },
   {
     id: 'consecure-sse',
@@ -61,7 +60,7 @@ const timelineEvents: TimelineEvent[] = [
       'Implemented data processing and automation pipelines',
       'Collaborated with stakeholders to deliver features on schedule',
     ],
-    technologies: ['Python', 'FastAPI', 'PostgreSQL', 'AWS/GCP', 'CI/CD']
+    technologies: ['Python', 'FastAPI', 'PostgreSQL', 'AWS', 'Rust', 'Axum', 'Redis', 'ElasticSearch', 'Kibana']
   },
   {
     id: 'hashinclude-sse',
@@ -76,7 +75,7 @@ const timelineEvents: TimelineEvent[] = [
       'Owned end-to-end delivery of key backend features',
       'Improved system reliability and performance',
     ],
-    technologies: ['Python', 'Django/FastAPI', 'PostgreSQL']
+    technologies: ['Python', 'FastAPI', 'PostgreSQL', 'Redis', 'ElasticSearch', 'Kibana']
   },
   {
     id: 'hashinclude-se',
@@ -91,14 +90,14 @@ const timelineEvents: TimelineEvent[] = [
       'Built features and fixed critical bugs across the stack',
       'Wrote clean, maintainable code and unit tests',
     ],
-    technologies: ['Python', 'React', 'PostgreSQL']
+    technologies: ['Python', 'React', 'PostgreSQL', 'Redis', 'ElasticSearch', 'Kibana']
   },
   {
     id: 'ksrtc-system',
     date: 'Jul 2020 – Aug 2022',
     title: 'System Engineer',
     company: 'KSRTC | India',
-    location: 'Karnataka, India',
+    location: 'Tiptur, Karnataka, India',
     type: 'work',
     icon: Settings,
     description: 'Implemented automation and analytics for fleet systems and operational efficiency.',
@@ -106,14 +105,14 @@ const timelineEvents: TimelineEvent[] = [
       'Designed data dashboards and analytics for operations',
       'Automated processes and improved system efficiency',
     ],
-    technologies: ['MySQL', 'Kibana', 'Python']
+    technologies: ['MySQL', 'DB Management', 'Server Configuration', 'System Management', 'Microsoft Office', 'Python']
   },
   {
     id: 'ksrtc-maintenance',
     date: 'Feb 2018 – Jun 2020',
     title: 'Maintenance Supervisor',
     company: 'KSRTC | India',
-    location: 'Karnataka, India',
+    location: 'Turuvekere, Karnataka, India',
     type: 'work',
     icon: Settings,
     description: 'Led maintenance operations, optimized schedules, and supported data-driven decisions.',
@@ -121,14 +120,14 @@ const timelineEvents: TimelineEvent[] = [
       'Improved vehicle reliability through proactive maintenance',
       'Managed resources and maintenance schedules',
     ],
-    technologies: ['SQL', 'Automation', 'Dashboards']
+    technologies: ['Preventive Maintenance', 'Microsoft Excel', 'Team Lead', 'Resource Management']
   },
   {
     id: 'education',
-    date: '2013 - 2016',
+    date: 'Sep 2013 - May 2016',
     title: 'Bachelor of Engineering - Mechanical',
     company: 'BMS College of Engineering',
-    location: 'Bangalore, India',
+    location: 'Bangalore, Karnataka, India',
     type: 'education',
     icon: GraduationCap,
     description: 'Earned B.E. in Mechanical Engineering with excellent academic performance.',
@@ -285,7 +284,7 @@ export const HorizontalTimeline: React.FC = () => {
         variants={containerVariants}
         initial="hidden"
         animate={inView ? "visible" : "hidden"}
-        className="space-y-12"
+        className="space-y-3"
       >
         {/* Section Header */}
         <motion.div variants={itemVariants} className="text-center">
@@ -295,7 +294,7 @@ export const HorizontalTimeline: React.FC = () => {
               Journey
             </span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground whitespace-nowrap max-w-none mx-auto">
             Explore my professional timeline - scroll or drag to navigate through my career milestones
           </p>
           <div className="w-24 h-1 bg-gradient-primary mx-auto rounded-full mt-6" />
@@ -304,7 +303,7 @@ export const HorizontalTimeline: React.FC = () => {
         {/* Timeline Navigation */}
         <motion.div 
           variants={itemVariants}
-          className="flex items-center justify-center gap-4 mb-8"
+          className="flex items-center justify-center gap-4 mb-2"
         >
           <Button
             variant="outline"
@@ -317,7 +316,6 @@ export const HorizontalTimeline: React.FC = () => {
           </Button>
           
           <div className="flex items-center gap-2">
-            <Play className="h-4 w-4 text-primary animate-pulse" />
             <span className="text-sm font-medium text-muted-foreground">
               Scroll to explore • {selectedIndex + 1} of {timelineEvents.length}
             </span>

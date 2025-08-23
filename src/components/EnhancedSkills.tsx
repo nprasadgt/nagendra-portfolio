@@ -31,19 +31,19 @@ const skills: Skill[] = [
   // Backend
   {
     name: 'Python',
-    level: 95,
+    level: 90,
     category: 'backend',
     icon: Code2,
     color: 'text-yellow-400',
-    technologies: ['FastAPI', 'Django', 'Flask', 'Pandas', 'NumPy']
+    technologies: ['FastAPI', 'Django', 'Pandas', 'Requests']
   },
   {
     name: 'Rust',
-    level: 85,
+    level: 50,
     category: 'backend',
     icon: Settings,
     color: 'text-orange-500',
-    technologies: ['Actix-web', 'Tokio', 'Serde', 'Diesel']
+    technologies: ['Axum', 'Tokio', 'Serde', 'Diesel']
   },
   {
     name: 'SQL',
@@ -51,13 +51,11 @@ const skills: Skill[] = [
     category: 'database',
     icon: Database,
     color: 'text-blue-400',
-    technologies: ['MySQL', 'PostgreSQL', 'Query Optimization']
+    technologies: ['MySQL', 'PostgreSQL', 'Triggers', 'Indexing']
   },
-
-  // Frontend
   {
     name: 'JavaScript/TypeScript',
-    level: 88,
+    level: 60,
     category: 'frontend',
     icon: Globe,
     color: 'text-yellow-500',
@@ -65,17 +63,15 @@ const skills: Skill[] = [
   },
   {
     name: 'React Ecosystem',
-    level: 85,
+    level: 75,
     category: 'frontend',
     icon: Layers,
     color: 'text-cyan-400',
     technologies: ['React', 'Next.js', 'Redux', 'Tailwind CSS']
   },
-
-  // Cloud & DevOps
   {
     name: 'AWS',
-    level: 88,
+    level: 70,
     category: 'cloud',
     icon: Cloud,
     color: 'text-orange-400',
@@ -83,15 +79,15 @@ const skills: Skill[] = [
   },
   {
     name: 'GCP',
-    level: 82,
+    level: 85,
     category: 'cloud',
     icon: Cloud,
     color: 'text-blue-400',
-    technologies: ['Cloud Run', 'GKE', 'Cloud SQL (PostgreSQL)', 'Pub/Sub', 'IAM']
+    technologies: ['Cloud Run', 'Compute Engine', 'GKE', 'Cloud SQL']
   },
   {
     name: 'Docker & K8s',
-    level: 82,
+    level: 80,
     category: 'devops',
     icon: Server,
     color: 'text-blue-500',
@@ -101,7 +97,7 @@ const skills: Skill[] = [
   // Databases
   {
     name: 'NoSQL',
-    level: 85,
+    level: 70,
     category: 'database',
     icon: Database,
     color: 'text-green-500',
@@ -111,7 +107,7 @@ const skills: Skill[] = [
   // Analytics & Design
   {
     name: 'Data Analytics',
-    level: 90,
+    level: 75,
     category: 'backend',
     icon: BarChart3,
     color: 'text-purple-500',
@@ -119,7 +115,7 @@ const skills: Skill[] = [
   },
   {
     name: 'AI-driven Development',
-    level: 75,
+    level: 95,
     category: 'backend',
     icon: Zap,
     color: 'text-amber-500',
@@ -127,17 +123,26 @@ const skills: Skill[] = [
   },
   {
     name: 'UI/UX Design',
-    level: 78,
+    level: 80,
     category: 'design',
     icon: Palette,
     color: 'text-pink-500',
     technologies: ['Figma', 'Design Systems', 'User Experience']
   },
 
+  {
+    name: 'n8n Automations',
+    level: 85,
+    category: 'devops',
+    icon: Settings,
+    color: 'text-emerald-500',
+    technologies: ['n8n', 'Workflow Automation', 'Integrations', 'Webhooks']
+  },
+
   // DevOps & Tools
   {
     name: 'CI/CD & Git',
-    level: 85,
+    level: 90,
     category: 'devops',
     icon: GitBranch,
     color: 'text-red-500',
@@ -145,7 +150,7 @@ const skills: Skill[] = [
   },
   {
     name: 'System Architecture',
-    level: 88,
+    level: 85,
     category: 'backend',
     icon: Shield,
     color: 'text-indigo-500',
@@ -238,7 +243,7 @@ export const EnhancedSkills: React.FC = () => {
               Expertise
             </span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground whitespace-nowrap max-w-none mx-auto">
             A comprehensive overview of my technical skills and proficiency levels across different domains
           </p>
           <div className="w-24 h-1 bg-gradient-primary mx-auto rounded-full mt-6" />
@@ -278,7 +283,7 @@ export const EnhancedSkills: React.FC = () => {
         {/* Skills Grid */}
         <motion.div 
           variants={containerVariants}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
         >
           {sortedSkills.map((skill, index) => {
             const Icon = skill.icon;
@@ -294,7 +299,7 @@ export const EnhancedSkills: React.FC = () => {
                 whileTap={{ scale: 0.98 }}
                 layout
               >
-                <Card className="bg-gradient-card border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-glass h-full">
+                <Card className="bg-gradient-card border-border/30 hover:border-primary/20 transition-all duration-300 hover:shadow-glass h-full">
                   <CardContent className="p-6 space-y-4">
                     {/* Skill Header */}
                     <div className="flex items-center gap-3">
