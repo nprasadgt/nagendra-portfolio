@@ -211,7 +211,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToSection }) => {
         </motion.div>
 
         {/* Scroll indicator */}
-        <motion.div
+        {/* <motion.div
           className="flex flex-col items-center"
           variants={floatingVariants}
           animate="animate"
@@ -224,7 +224,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToSection }) => {
             <ChevronDown className="w-8 h-8" />
           </motion.div>
           <span className="text-sm text-muted-foreground mt-2">Scroll to explore</span>
-        </motion.div>
+        </motion.div> */}
       </motion.div>
 
       {/* Gradient overlays for depth */}
