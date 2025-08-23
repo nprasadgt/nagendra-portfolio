@@ -1,9 +1,8 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { ChevronDown, Github, Linkedin, Mail, Zap, Layers, Users, Award } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { useInView } from 'react-intersection-observer';
 import heroBackground from '@/assets/hero-background.jpg';
+import { motion } from 'framer-motion';
+import { Award, ChevronDown, Github, Layers, Linkedin, Mail, Users, Zap } from 'lucide-react';
+import React from 'react';
+import { useInView } from 'react-intersection-observer';
 
 interface HeroProps {
   onScrollToSection: (section: string) => void;
@@ -87,98 +86,38 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToSection }) => {
       </div>
 
       <motion.div
-        className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8"
+        className="relative z-10 text-center max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"
         variants={containerVariants}
         initial="hidden"
         animate={inView ? "visible" : "hidden"}
       >
-        {/* Main heading */}
+        {/* Executive-friendly heading */}
         <motion.h1
-          className="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6"
+          className="text-4xl sm:text-6xl lg:text-7xl font-extrabold mb-4"
           variants={itemVariants}
         >
-          <span className="whitespace-nowrap">
-            <span className="text-foreground">Hi, I'm</span>{' '}
-            <motion.span
-              className="bg-gradient-primary bg-clip-text text-transparent"
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              Nagendra Prasad G T
-            </motion.span>
+          <span className="whitespace-nowrap bg-clip-text text-transparent bg-gradient-primary">
+            Nagendra Prasad G T
           </span>
         </motion.h1>
+        <motion.p
+          className="text-lg sm:text-2xl lg:text-3xl text-muted-foreground mb-6"
+          variants={itemVariants}
+        >
+          Technical Specialist & Full-Stack Developer | Driving scalable backend, frontend, and DevOps solutions that empower organizations, accelerate growth, and enable leaders to turn strategy into real-world impact.
+        </motion.p>
 
-        {/* Subtitle with subtle suspense + shimmer to invite exploration */}
-        <motion.div variants={itemVariants} className="mb-8">
-          <motion.p className="text-xl sm:text-2xl lg:text-3xl text-muted-foreground leading-relaxed">
-            Multi-disciplinary developer and technical specialist skilled in{' '}
-            {/* Animated, shimmering keywords */}
-            <motion.span
-              className="font-semibold bg-clip-text text-transparent"
-              style={{
-                backgroundImage:
-                  'linear-gradient(90deg, rgba(139,92,246,0.6), rgba(168,85,247,1), rgba(139,92,246,0.6))',
-                backgroundSize: '200% 100%'
-              }}
-              animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
-              transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-              whileHover={{ scale: 1.06 }}
-            >
-              backend
-            </motion.span>
-            {', '}
-            <motion.span
-              className="font-semibold bg-clip-text text-transparent"
-              style={{
-                backgroundImage:
-                  'linear-gradient(90deg, rgba(34,197,94,0.6), rgba(16,185,129,1), rgba(34,197,94,0.6))',
-                backgroundSize: '200% 100%'
-              }}
-              animate={{ backgroundPosition: ['100% 50%', '0% 50%', '100% 50%'] }}
-              transition={{ duration: 3.2, repeat: Infinity, ease: 'easeInOut' }}
-              whileHover={{ scale: 1.06 }}
-            >
-              frontend
-            </motion.span>
-            {', '}
-            <motion.span
-              className="font-semibold bg-clip-text text-transparent"
-              style={{
-                backgroundImage:
-                  'linear-gradient(90deg, rgba(59,130,246,0.6), rgba(99,102,241,1), rgba(59,130,246,0.6))',
-                backgroundSize: '200% 100%'
-              }}
-              animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
-              transition={{ duration: 3.4, repeat: Infinity, ease: 'easeInOut' }}
-              whileHover={{ scale: 1.06 }}
-            >
-              DevOps
-            </motion.span>
-            {' '}and{' '}
-            <motion.span
-              className="font-semibold bg-clip-text text-transparent"
-              style={{
-                backgroundImage:
-                  'linear-gradient(90deg, rgba(236,72,153,0.6), rgba(217,70,239,1), rgba(236,72,153,0.6))',
-                backgroundSize: '200% 100%'
-              }}
-              animate={{ backgroundPosition: ['100% 50%', '0% 50%', '100% 50%'] }}
-              transition={{ duration: 3.6, repeat: Infinity, ease: 'easeInOut' }}
-              whileHover={{ scale: 1.06 }}
-            >
-              design
-            </motion.span>
-          </motion.p>
-
-          {/* Underline sweep as a subtle cue to scroll */}
-          <motion.div
-            className="mt-2 h-0.5 w-full bg-gradient-to-r from-transparent via-primary/60 to-transparent rounded-full"
-            initial={{ scaleX: 0, opacity: 0.3 }}
-            animate={{ scaleX: 1, opacity: [0.3, 0.7, 0.3] }}
-            transition={{ duration: 1.2, ease: 'easeOut' }}
-            style={{ transformOrigin: 'left' }}
-          />
+        {/* Concise executive summary with highlighted keywords */}
+        <motion.div variants={itemVariants} className="mb-8 max-w-5xl mx-auto">
+          <p className="text-base sm:text-lg lg:text-xl text-muted-foreground leading-relaxed">
+            Multi-disciplinary developer and technical specialist delivering scalable systems,{' '}
+            <span className="text-primary font-semibold">AI</span>-driven workflows, and outcome-focused solutions. Trusted partner to{' '}
+            <span className="text-foreground font-semibold">CEOs</span>,{' '}
+            <span className="text-foreground font-semibold">CTOs</span>, and teams to translate strategy into shipped products across{' '}
+            <span className="text-primary font-semibold">backend</span>,{' '}
+            <span className="text-accent font-semibold">frontend</span>, and{' '}
+            <span className="text-primary-glow font-semibold">DevOps</span>.
+          </p>
         </motion.div>
 
         {/* Value props to add weight and compel exploration */}
@@ -223,51 +162,28 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToSection }) => {
           </span>
         </motion.div>
 
-        {/* Quick explore chips */}
+        {/* Quick explore chips (single line, scrollable on small screens) */}
         <motion.div
-          className="flex flex-wrap gap-3 justify-center mb-12"
+          className="flex flex-nowrap gap-3 justify-center mb-6 overflow-x-auto px-2"
           variants={itemVariants}
         >
           {[
             { id: 'projects', label: 'See projects' },
             { id: 'skills', label: 'Explore skills' },
-            { id: 'timeline', label: 'Career timeline' }
+            { id: 'timeline', label: 'Career timeline' },
+            { id: 'contact', label: 'Get in touch' }
           ].map((chip) => (
             <motion.button
               key={chip.id}
               onClick={() => onScrollToSection(chip.id)}
-              className="px-4 py-2 text-sm rounded-full border border-border/60 bg-card/60 text-foreground hover:border-primary/40 hover:bg-primary/10 transition-colors"
-              whileHover={{ scale: 1.05 }}
+              className="px-4 py-2 text-sm rounded-full border border-border/60 bg-card/60 text-foreground hover:border-primary/40 hover:bg-primary/10 transition-colors shrink-0"
+              whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
             >
               {chip.label}
             </motion.button>
           ))}
         </motion.div>
-
-        {/* CTA Buttons */}
-        <motion.div
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
-          variants={itemVariants}
-        >
-          <Button
-            onClick={() => onScrollToSection('projects')}
-            size="lg"
-            className="bg-gradient-primary hover:shadow-primary text-primary-foreground font-semibold px-8 py-6 text-lg rounded-xl transition-all duration-300 hover:scale-105"
-          >
-            View My Work
-          </Button>
-          
-          <Button
-            onClick={() => onScrollToSection('contact')}
-            variant="outline"
-            size="lg"
-            className="border-primary/30 text-primary hover:bg-primary/10 font-semibold px-8 py-6 text-lg rounded-xl transition-all duration-300 hover:scale-105"
-          >
-            Get In Touch
-          </Button>
-        </motion.div>
-
         {/* Social Links */}
         <motion.div
           className="flex justify-center space-x-6 mb-16"

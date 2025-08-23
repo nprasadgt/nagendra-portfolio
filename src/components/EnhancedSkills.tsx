@@ -1,6 +1,5 @@
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
-import { Progress } from '@/components/ui/progress';
 import { motion } from 'framer-motion';
 import {
   BarChart3,
@@ -186,6 +185,16 @@ export const EnhancedSkills: React.FC = () => {
     ? skills.filter(skill => skill.category === selectedCategory)
     : skills;
 
+  // Sort skills by proficiency (level) in descending order for clearer expertise emphasis
+  const sortedSkills = [...filteredSkills].sort((a, b) => b.level - a.level);
+
+  const getProficiencyLabel = (level: number) => {
+    if (level >= 90) return 'Advanced';
+    if (level >= 75) return 'Proficient';
+    if (level >= 60) return 'Intermediate';
+    return 'Learning';
+  };
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -271,7 +280,7 @@ export const EnhancedSkills: React.FC = () => {
           variants={containerVariants}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
-          {filteredSkills.map((skill, index) => {
+          {sortedSkills.map((skill, index) => {
             const Icon = skill.icon;
             const isHovered = hoveredSkill === skill.name;
 
@@ -320,25 +329,27 @@ export const EnhancedSkills: React.FC = () => {
                       </div>
                     </div>
 
-                    {/* Progress Bar */}
+                    {/* Proficiency Label + Single Progress Bar */}
                     <div className="space-y-2">
-                      <Progress 
-                        value={inView ? skill.level : 0} 
-                        className="h-2 bg-muted"
-                      />
+                      <div className="flex items-center justify-between text-xs">
+                        <span className="text-muted-foreground">
+                          {getProficiencyLabel(skill.level)}
+                        </span>
+                        <span className="text-primary font-medium">{skill.level}%</span>
+                      </div>
                       <motion.div
                         className="w-full bg-muted rounded-full h-2 overflow-hidden"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        transition={{ delay: 0.3 + index * 0.1 }}
+                        transition={{ delay: 0.25 + index * 0.08 }}
                       >
                         <motion.div
                           className="h-full bg-gradient-primary"
                           initial={{ width: 0 }}
                           animate={{ width: inView ? `${skill.level}%` : 0 }}
                           transition={{ 
-                            duration: 1.5, 
-                            delay: 0.5 + index * 0.1,
+                            duration: 1.2, 
+                            delay: 0.35 + index * 0.08,
                             ease: "easeOut"
                           }}
                         />
