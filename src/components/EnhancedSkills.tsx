@@ -83,6 +83,14 @@ const skills: Skill[] = [
     technologies: ['Lambda', 'Step Functions', 'EC2', 'S3', 'RDS']
   },
   {
+    name: 'GCP',
+    level: 82,
+    category: 'cloud',
+    icon: Cloud,
+    color: 'text-blue-400',
+    technologies: ['Cloud Run', 'GKE', 'Cloud SQL (PostgreSQL)', 'Pub/Sub', 'IAM']
+  },
+  {
     name: 'Docker & K8s',
     level: 82,
     category: 'devops',
@@ -109,6 +117,14 @@ const skills: Skill[] = [
     icon: BarChart3,
     color: 'text-purple-500',
     technologies: ['Pandas', 'Kibana', 'PowerBI', 'Data Visualization']
+  },
+  {
+    name: 'AI-driven Development',
+    level: 75,
+    category: 'backend',
+    icon: Zap,
+    color: 'text-amber-500',
+    technologies: ['LLM Integration', 'RAG Patterns', 'Prompt Engineering']
   },
   {
     name: 'UI/UX Design',

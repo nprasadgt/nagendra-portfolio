@@ -47,7 +47,7 @@ const contactInfo: ContactInfo[] = [
   {
     icon: MapPin,
     label: 'Location',
-    value: 'Bangalore, India',
+    value: 'Bengaluru, Karnataka, India',
     href: '#',
     color: 'text-blue-500'
   },

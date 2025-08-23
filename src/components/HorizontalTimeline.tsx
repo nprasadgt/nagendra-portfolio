@@ -33,79 +33,96 @@ interface TimelineEvent {
 const timelineEvents: TimelineEvent[] = [
   {
     id: 'current',
-    date: 'Sep 2022 - Present',
-    title: 'Technical Specialist / Backend Developer',
-    company: 'ConnectSecure (CyberCNS)',
-    location: 'Remote',
+    date: 'Jun 2024 – Present',
+    title: 'Technical Specialist',
+    company: 'WarpDrive Tech Works',
+    location: 'Bengaluru, Karnataka, India',
     type: 'work',
     icon: Building2,
-    description: 'Leading design and development of critical systems, managing serverless workflows, and mentoring junior engineers.',
+    description: 'Designing and building backend services and modern frontends, leading cloud/DevOps initiatives, and integrating AI into engineering workflows.',
     achievements: [
-      'Led design and development of scripts for pay rules, accrual and validation',
-      'Built and maintained Python scripts and FastAPI services',
-      'Created APIs using Rust for high-performance applications',
-      'Designed features based on client feedback and requirements',
-      'Built serverless workflows using AWS Step Functions and Lambda',
-      'Developed a comprehensive licensing portal',
-      'Managed server maintenance and live migrations',
-      'Automated billing and analytics using dataframes and Python'
+      'Designed and developed scalable backend services and APIs',
+      'Built modern, performant frontends using React/TypeScript',
+      'Led cloud & DevOps efforts to improve reliability and delivery',
+      'Integrated AI into development workflows to accelerate delivery',
     ],
-    technologies: ['Python', 'FastAPI', 'Rust', 'AWS Lambda', 'Step Functions', 'PostgreSQL']
+    technologies: ['Python', 'Django', 'FastAPI', 'React', 'PostgreSQL', 'GCP', 'Cloud', 'DevOps']
   },
   {
-    id: 'interviewer',
-    date: 'Jun 2024 - Present',
-    title: 'Technical Specialist & Interviewer',
-    company: 'ConnectSecure',
-    location: 'Remote',
-    type: 'achievement',
-    icon: Users,
-    description: 'Conducting technical interviews and contributing to solution architecture for client projects.',
+    id: 'consecure-sse',
+    date: 'Apr 2023 – May 2024',
+    title: 'Senior Software Engineer',
+    company: 'Consecure Technologies Pvt Ltd',
+    location: 'Bengaluru, Karnataka, India',
+    type: 'work',
+    icon: Building2,
+    description: 'Built and maintained platform features and services, collaborating across teams to deliver business-critical solutions.',
     achievements: [
-      'Conduct technical interviews to assess candidate capabilities',
-      'Mentor junior engineers and provide technical guidance',
-      'Contribute to solution architecture and technical strategy',
-      'Lead technical discussions for client project requirements'
+      'Developed backend services and APIs with Python/FastAPI',
+      'Implemented data processing and automation pipelines',
+      'Collaborated with stakeholders to deliver features on schedule',
     ],
-    technologies: ['Leadership', 'Mentoring', 'Solution Architecture', 'Technical Interviews']
+    technologies: ['Python', 'FastAPI', 'PostgreSQL', 'AWS/GCP', 'CI/CD']
   },
   {
-    id: 'ksrtc-software',
-    date: 'Jul 2020 - Sep 2022',
+    id: 'hashinclude-sse',
+    date: 'Jan 2023 – Mar 2023',
+    title: 'Senior Software Engineer',
+    company: 'Hashinclude Computech Pvt Ltd',
+    location: 'Bengaluru, Karnataka, India',
+    type: 'work',
+    icon: Building2,
+    description: 'Delivered high-impact features and supported production systems in a fast-paced environment.',
+    achievements: [
+      'Owned end-to-end delivery of key backend features',
+      'Improved system reliability and performance',
+    ],
+    technologies: ['Python', 'Django/FastAPI', 'PostgreSQL']
+  },
+  {
+    id: 'hashinclude-se',
+    date: 'Sep 2022 – Dec 2022',
     title: 'Software Engineer',
-    company: 'KSRTC (Karnataka)',
-    location: 'Karnataka, India',
+    company: 'Hashinclude Computech Pvt Ltd',
+    location: 'Bengaluru, Karnataka, India',
     type: 'work',
     icon: Code,
-    description: 'Developed advanced data solutions and automation systems to improve operational efficiency.',
+    description: 'Contributed to application development, collaborating closely with cross-functional teams.',
     achievements: [
-      'Developed advanced MySQL queries and automation systems',
-      'Implemented data-driven decision support systems',
-      'Maintained and updated critical software systems',
-      'Improved fleet reliability and operational efficiency by 25%',
-      'Designed comprehensive dashboards in Kibana for partner and sales insights',
-      'Created event sets and webhooks for automated ticket generation'
+      'Built features and fixed critical bugs across the stack',
+      'Wrote clean, maintainable code and unit tests',
     ],
-    technologies: ['MySQL', 'Kibana', 'Python', 'Webhooks', 'Data Analytics']
+    technologies: ['Python', 'React', 'PostgreSQL']
   },
   {
-    id: 'ksrtc-maintenance',
-    date: 'Feb 2018 - Jun 2020',
-    title: 'Maintenance Engineer',
-    company: 'KSRTC (Karnataka)',
+    id: 'ksrtc-system',
+    date: 'Jul 2020 – Aug 2022',
+    title: 'System Engineer',
+    company: 'KSRTC | India',
     location: 'Karnataka, India',
     type: 'work',
     icon: Settings,
-    description: 'Led maintenance operations and implemented automation solutions to optimize fleet management.',
+    description: 'Implemented automation and analytics for fleet systems and operational efficiency.',
     achievements: [
-      'Led team maintenance operations, improving vehicle reliability',
-      'Reduced vehicle breakdowns by 30% through proactive maintenance',
-      'Managed resources and maintenance schedules effectively',
-      'Used Redis queues and webhooks to automate alert generation',
-      'Created MySQL-powered dashboards for maintenance tracking',
-      'Built SQL scripts for data extraction and process automation'
+      'Designed data dashboards and analytics for operations',
+      'Automated processes and improved system efficiency',
     ],
-    technologies: ['MySQL', 'Redis', 'Python', 'SQL', 'Process Automation']
+    technologies: ['MySQL', 'Kibana', 'Python']
+  },
+  {
+    id: 'ksrtc-maintenance',
+    date: 'Feb 2018 – Jun 2020',
+    title: 'Maintenance Supervisor',
+    company: 'KSRTC | India',
+    location: 'Karnataka, India',
+    type: 'work',
+    icon: Settings,
+    description: 'Led maintenance operations, optimized schedules, and supported data-driven decisions.',
+    achievements: [
+      'Improved vehicle reliability through proactive maintenance',
+      'Managed resources and maintenance schedules',
+    ],
+    technologies: ['SQL', 'Automation', 'Dashboards']
   },
   {
     id: 'education',
@@ -150,6 +167,28 @@ export const HorizontalTimeline: React.FC = () => {
   const scrollNext = useCallback(() => {
     if (emblaApi) emblaApi.scrollNext();
   }, [emblaApi]);
+
+  // Enable horizontal scrolling via mouse/trackpad wheel
+  const handleWheel = useCallback(
+    (e: React.WheelEvent<HTMLDivElement>) => {
+      if (!emblaApi) return;
+      // Only respond to horizontal wheel gestures (deltaX). Let vertical scrolling pass through.
+      const dx = e.deltaX;
+      if (Math.abs(dx) <= 0) return; // vertical-only scroll; do nothing
+      if (dx > 0) {
+        if (emblaApi.canScrollNext()) {
+          e.preventDefault();
+          emblaApi.scrollNext();
+        }
+      } else if (dx < 0) {
+        if (emblaApi.canScrollPrev()) {
+          e.preventDefault();
+          emblaApi.scrollPrev();
+        }
+      }
+    },
+    [emblaApi]
+  );
 
   const onSelect = useCallback((emblaApi: any) => {
     setSelectedIndex(emblaApi.selectedScrollSnap());
@@ -245,7 +284,7 @@ export const HorizontalTimeline: React.FC = () => {
           <div className="flex items-center gap-2">
             <Play className="h-4 w-4 text-primary animate-pulse" />
             <span className="text-sm font-medium text-muted-foreground">
-              Drag to explore • {selectedIndex + 1} of {timelineEvents.length}
+              Scroll to explore • {selectedIndex + 1} of {timelineEvents.length}
             </span>
           </div>
 
@@ -266,7 +305,12 @@ export const HorizontalTimeline: React.FC = () => {
           <div className="absolute top-20 left-0 right-0 h-0.5 bg-gradient-to-r from-primary via-accent to-primary-glow" />
           
           {/* Embla Carousel */}
-          <div className="overflow-hidden" ref={emblaRef}>
+          <div
+            className="overflow-x-hidden"
+            ref={emblaRef}
+            style={{ overflowY: 'visible' }}
+            onWheel={handleWheel}
+          >
             <div className="flex gap-6">
               {timelineEvents.map((event, index) => {
                 const Icon = event.icon;

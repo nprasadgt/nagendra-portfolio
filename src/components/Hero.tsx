@@ -171,8 +171,8 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToSection }) => {
           variants={itemVariants}
         >
           {[
-            { icon: Github, href: '#', label: 'GitHub' },
-            { icon: Linkedin, href: '#', label: 'LinkedIn' },
+            { icon: Github, href: 'https://github.com/nagendraprasad', label: 'GitHub' },
+            { icon: Linkedin, href: 'https://www.linkedin.com/in/nagendraprasad-g-t/', label: 'LinkedIn' },
             { icon: Mail, href: 'mailto:nprasadgt@gmail.com', label: 'Email' },
           ].map((social, index) => {
             const Icon = social.icon;

@@ -107,28 +107,28 @@ export const About: React.FC = () => {
           <motion.div variants={itemVariants} className="space-y-6">
             <div className="prose prose-lg dark:prose-invert max-w-none">
               <p className="text-lg text-muted-foreground leading-relaxed">
-                I'm <strong className="text-foreground">Nagendra Prasad G T</strong>, 
-                a passionate Technical Specialist and Solution Architect currently working at{' '}
-                <strong className="text-primary">ConnectSecure</strong> (formerly CyberCNS). 
-                With over <strong className="text-accent">nine years of experience</strong> in 
-                the software industry, I've developed a comprehensive skill set spanning backend 
-                development, frontend technologies, cloud DevOps, and user experience design.
+                I'm <strong className="text-foreground">Nagendra Prasad G T</strong>, a
+                <strong className="text-foreground"> Full-Stack Developer & Technical Specialist</strong>
+                currently working at <strong className="text-primary">WarpDrive Tech Works</strong>
+                (Jun 2024 – Present, Bengaluru, Karnataka, India). With over
+                <strong className="text-accent"> nine years of experience</strong> in the software
+                industry, I bring expertise across backend services, modern frontends, cloud and DevOps
+                practices, and user-focused solution design.
               </p>
 
               <p className="text-lg text-muted-foreground leading-relaxed">
-                My journey has taken me through various roles, from maintaining and optimizing 
-                fleet systems at KSRTC to designing scalable solutions and mentoring teams at 
-                ConnectSecure. I believe in building{' '}
-                <strong className="text-primary">efficient</strong>,{' '}
-                <strong className="text-accent">secure</strong>, and{' '}
-                <strong className="text-primary-glow">intuitive</strong> solutions that make 
-                a real impact.
+                I build <strong className="text-primary">efficient</strong>,
+                <strong className="text-accent"> secure</strong>, and
+                <strong className="text-primary-glow"> intuitive</strong> systems end-to-end — from
+                APIs and data models to responsive UIs and scalable cloud infrastructure. I'm currently
+                pursuing AI certifications and actively integrating AI into development workflows
+                to accelerate delivery and improve developer experience.
               </p>
 
               <p className="text-lg text-muted-foreground leading-relaxed">
-                When I'm not coding, you'll find me exploring new technologies, contributing to 
-                solution architecture, or conducting technical interviews to help build amazing 
-                development teams.
+                Previously, I delivered impactful software at ConnectSecure (CyberCNS) and KSRTC, working
+                across domains like automation, analytics, and platform engineering, while mentoring teams
+                and driving architectural decisions.
               </p>
             </div>
 
@@ -136,14 +136,11 @@ export const About: React.FC = () => {
               className="flex flex-wrap gap-3"
               variants={itemVariants}
             >
-              {['Python', 'TypeScript', 'React', 'AWS', 'Docker', 'FastAPI'].map((tech, index) => (
+              {['Python', 'TypeScript', 'React', 'GCP', 'Docker', 'FastAPI'].map((tech, index) => (
                 <motion.span
                   key={tech}
-                  className="px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full border border-primary/20"
-                  whileHover={{ scale: 1.05, backgroundColor: 'hsl(var(--primary) / 0.2)' }}
-                  initial={{ opacity: 0, scale: 0 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: index * 0.1 }}
+                  whileHover={{ scale: 1.05 }}
+                  className="px-4 py-2 rounded-full bg-muted/50 text-sm font-medium text-muted-foreground border border-border/50"
                 >
                   {tech}
                 </motion.span>
@@ -205,13 +202,13 @@ export const About: React.FC = () => {
                 <h3 className="text-2xl font-bold text-foreground">
                   Currently at{' '}
                   <span className="bg-gradient-primary bg-clip-text text-transparent">
-                    ConnectSecure
+                    WarpDrive Tech Works
                   </span>
                 </h3>
                 <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                  As a Technical Specialist and Solution Architect, I lead the design and 
-                  development of critical systems, mentor junior engineers, and contribute to 
-                  the technical strategy for client projects.
+                  As a Technical Specialist, I design and develop backend services and modern frontends,
+                  lead cloud/DevOps initiatives, and integrate AI into workflows to boost productivity and
+                  quality.
                 </p>
               </motion.div>
             </CardContent>
