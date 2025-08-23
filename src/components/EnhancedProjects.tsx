@@ -1,24 +1,24 @@
-import React, { useState } from 'react';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { 
-  ExternalLink,
-  Github,
+import {
+  ArrowRight,
+  BarChart3,
   Calendar,
-  Users,
-  Zap,
-  Database,
   Cloud,
   Code,
-  Server,
-  BarChart3,
-  Shield,
+  Database,
+  ExternalLink,
+  Github,
   Layers,
-  ArrowRight
+  Server,
+  Shield,
+  Users,
+  Zap
 } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
+import React, { useState } from 'react';
+import { useInView } from 'react-intersection-observer';
 
 interface Project {
   id: string;
@@ -214,7 +214,7 @@ export const EnhancedProjects: React.FC = () => {
   return (
     <section
       ref={ref}
-      className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"
+      className="py-5 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"
       id="projects"
     >
       <motion.div

@@ -1,18 +1,16 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { 
-  Code, 
-  Server, 
-  Cloud, 
-  Palette, 
-  Database,
-  Settings,
-  Monitor,
-  Globe
-} from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
-import { Progress } from '@/components/ui/progress';
+import { motion } from 'framer-motion';
+import {
+  Cloud,
+  Code,
+  Database,
+  Monitor,
+  Palette,
+  Server,
+  Settings
+} from 'lucide-react';
+import React from 'react';
+import { useInView } from 'react-intersection-observer';
 
 interface Skill {
   name: string;
@@ -297,7 +295,7 @@ export const Skills: React.FC = () => {
                 className="space-y-4"
               >
                 <h3 className="text-2xl font-bold text-foreground">
-                  9+ Years of{' '}
+                  7+ Years of{' '}
                   <span className="bg-gradient-primary bg-clip-text text-transparent">
                     Continuous Learning
                   </span>

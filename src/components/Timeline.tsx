@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { 
-  Building2, 
-  Code, 
-  Settings, 
-  GraduationCap, 
-  Users, 
-  Calendar,
-  MapPin,
-  ChevronRight,
-  ChevronDown
-} from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import { AnimatePresence, motion } from 'framer-motion';
+import {
+  Building2,
+  Calendar,
+  ChevronDown,
+  ChevronRight,
+  Code,
+  GraduationCap,
+  MapPin,
+  Settings,
+  Users
+} from 'lucide-react';
+import React, { useState } from 'react';
+import { useInView } from 'react-intersection-observer';
 
 interface TimelineEvent {
   id: string;
@@ -182,7 +182,7 @@ export const Timeline: React.FC = () => {
   return (
     <section
       ref={ref}
-      className="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto"
+      className="py-2 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto"
       id="timeline"
     >
       <motion.div

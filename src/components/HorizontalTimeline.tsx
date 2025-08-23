@@ -1,21 +1,20 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
 import useEmblaCarousel from 'embla-carousel-react';
-import { 
-  Building2, 
-  Code, 
-  Settings, 
-  GraduationCap, 
-  Users, 
+import { motion } from 'framer-motion';
+import {
+  Building2,
   Calendar,
-  MapPin,
   ChevronLeft,
   ChevronRight,
-  Play
+  Code,
+  GraduationCap,
+  MapPin,
+  Play,
+  Settings
 } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useInView } from 'react-intersection-observer';
 
 interface TimelineEvent {
   id: string;
@@ -159,13 +158,24 @@ export const HorizontalTimeline: React.FC = () => {
   const [prevBtnDisabled, setPrevBtnDisabled] = useState(true);
   const [nextBtnDisabled, setNextBtnDisabled] = useState(true);
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [expandedTech, setExpandedTech] = useState<Record<string, boolean>>({});
+  const wheelDxRightRef = useRef(0);
+  const wheelDxLeftRef = useRef(0);
+  const WHEEL_THRESHOLD = 60; // higher = slower horizontal scroll
 
   const scrollPrev = useCallback(() => {
-    if (emblaApi) emblaApi.scrollPrev();
+    if (!emblaApi) return;
+    const current = emblaApi.selectedScrollSnap();
+    const target = Math.max(0, current - 1);
+    if (target !== current) emblaApi.scrollTo(target);
   }, [emblaApi]);
 
   const scrollNext = useCallback(() => {
-    if (emblaApi) emblaApi.scrollNext();
+    if (!emblaApi) return;
+    const current = emblaApi.selectedScrollSnap();
+    const last = emblaApi.scrollSnapList().length - 1;
+    const target = Math.min(last, current + 1);
+    if (target !== current) emblaApi.scrollTo(target);
   }, [emblaApi]);
 
   // Enable horizontal scrolling via mouse/trackpad wheel
@@ -175,16 +185,41 @@ export const HorizontalTimeline: React.FC = () => {
       // Only respond to horizontal wheel gestures (deltaX). Let vertical scrolling pass through.
       const dx = e.deltaX;
       if (Math.abs(dx) <= 0) return; // vertical-only scroll; do nothing
+      // Prevent browser back/forward navigation on macOS horizontal swipe
+      e.preventDefault();
       if (dx > 0) {
+        wheelDxRightRef.current += dx;
+        wheelDxLeftRef.current = 0;
+      } else if (dx < 0) {
+        wheelDxLeftRef.current += Math.abs(dx);
+        wheelDxRightRef.current = 0;
+      }
+
+      if (wheelDxRightRef.current > WHEEL_THRESHOLD) {
         if (emblaApi.canScrollNext()) {
-          e.preventDefault();
           emblaApi.scrollNext();
         }
-      } else if (dx < 0) {
+        wheelDxRightRef.current = 0;
+      } else if (wheelDxLeftRef.current > WHEEL_THRESHOLD) {
         if (emblaApi.canScrollPrev()) {
-          e.preventDefault();
           emblaApi.scrollPrev();
         }
+        wheelDxLeftRef.current = 0;
+      }
+    },
+    [emblaApi]
+  );
+
+  // Optional: keyboard support for left/right arrows when focused
+  const handleKeyDown = useCallback(
+    (e: React.KeyboardEvent<HTMLDivElement>) => {
+      if (!emblaApi) return;
+      if (e.key === 'ArrowRight' && emblaApi.canScrollNext()) {
+        e.preventDefault();
+        emblaApi.scrollNext();
+      } else if (e.key === 'ArrowLeft' && emblaApi.canScrollPrev()) {
+        e.preventDefault();
+        emblaApi.scrollPrev();
       }
     },
     [emblaApi]
@@ -243,7 +278,7 @@ export const HorizontalTimeline: React.FC = () => {
   return (
     <section
       ref={ref}
-      className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"
+      className="py-5 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"
       id="timeline"
     >
       <motion.div
@@ -308,13 +343,13 @@ export const HorizontalTimeline: React.FC = () => {
           <div
             className="overflow-x-hidden"
             ref={emblaRef}
-            style={{ overflowY: 'visible' }}
+            style={{ overflowY: 'visible', overscrollBehaviorX: 'contain' }}
             onWheel={handleWheel}
           >
-            <div className="flex gap-6">
+            <div className="flex gap-6 pt-6">
               {timelineEvents.map((event, index) => {
                 const Icon = event.icon;
-                const isActive = index === selectedIndex;
+                const isActive = false; // disable default active styling; only hover will highlight
 
                 return (
                   <motion.div
@@ -325,24 +360,17 @@ export const HorizontalTimeline: React.FC = () => {
                   >
                     {/* Timeline Node */}
                     <motion.div
-                      className={`relative mx-auto w-12 h-12 rounded-full border-2 flex items-center justify-center mb-6 ${getTypeColor(event.type)} transition-all duration-300 ${
-                        isActive ? 'scale-125 shadow-glow' : 'scale-100'
-                      }`}
+                      className={`relative mx-auto w-12 h-12 rounded-full border-2 flex items-center justify-center mb-6 ${getTypeColor(event.type)} transition-all duration-300`}
                       whileHover={{ scale: 1.3 }}
                       whileTap={{ scale: 0.9 }}
                     >
                       <Icon className="w-6 h-6" />
+                      {/* Subtle ring on hover only */}
                       <motion.div
-                        className="absolute -inset-2 rounded-full border border-primary/20"
-                        animate={{
-                          scale: isActive ? [1, 1.2, 1] : 1,
-                          opacity: isActive ? [0.5, 0, 0.5] : 0,
-                        }}
-                        transition={{
-                          duration: 2,
-                          repeat: isActive ? Infinity : 0,
-                          ease: "easeInOut"
-                        }}
+                        className="absolute -inset-1 rounded-full border border-primary/20"
+                        initial={{ opacity: 0 }}
+                        whileHover={{ opacity: 0.6, scale: 1.1 }}
+                        transition={{ duration: 0.3 }}
                       />
                     </motion.div>
 
@@ -379,7 +407,7 @@ export const HorizontalTimeline: React.FC = () => {
                               Tech Stack:
                             </h4>
                             <div className="flex flex-wrap gap-1">
-                              {event.technologies.slice(0, 4).map((tech, idx) => (
+                              {(expandedTech[event.id] ? event.technologies : event.technologies.slice(0, 4)).map((tech, idx) => (
                                 <motion.span
                                   key={idx}
                                   className="px-2 py-1 bg-primary/10 text-primary text-xs font-medium rounded border border-primary/20"
@@ -389,10 +417,14 @@ export const HorizontalTimeline: React.FC = () => {
                                   {tech}
                                 </motion.span>
                               ))}
-                              {event.technologies.length > 4 && (
-                                <span className="px-2 py-1 bg-muted text-muted-foreground text-xs font-medium rounded">
+                              {event.technologies.length > 4 && !expandedTech[event.id] && (
+                                <button
+                                  type="button"
+                                  onClick={() => setExpandedTech(prev => ({ ...prev, [event.id]: true }))}
+                                  className="px-2 py-1 bg-muted text-muted-foreground text-xs font-medium rounded border border-border/50 hover:bg-muted/80 transition-colors"
+                                >
                                   +{event.technologies.length - 4} more
-                                </span>
+                                </button>
                               )}
                             </div>
                           </div>

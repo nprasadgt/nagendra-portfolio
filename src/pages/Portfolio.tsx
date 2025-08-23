@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { ParallaxProvider } from 'react-scroll-parallax';
-import { Navigation } from '@/components/Navigation';
-import { Hero } from '@/components/Hero';
 import { About } from '@/components/About';
-import { HorizontalTimeline } from '@/components/HorizontalTimeline';
-import { EnhancedSkills } from '@/components/EnhancedSkills';
-import { EnhancedProjects } from '@/components/EnhancedProjects';
 import { Education } from '@/components/Education';
 import { EnhancedContact } from '@/components/EnhancedContact';
+import { EnhancedProjects } from '@/components/EnhancedProjects';
+import { EnhancedSkills } from '@/components/EnhancedSkills';
+import { Hero } from '@/components/Hero';
+import { HorizontalTimeline } from '@/components/HorizontalTimeline';
+import { Navigation } from '@/components/Navigation';
+import { motion } from 'framer-motion';
+import React, { useEffect, useState } from 'react';
+import { ParallaxProvider } from 'react-scroll-parallax';
 
 const Portfolio: React.FC = () => {
   const [activeSection, setActiveSection] = useState('home');
@@ -107,7 +107,7 @@ const Portfolio: React.FC = () => {
               transition={{ type: "spring", stiffness: 300 }}
             >
               <p className="text-muted-foreground">
-                © 2024 Nagendra Prasad G T. All rights reserved.
+                © 2025 Nagendra Prasad G T. All rights reserved.
               </p>
               <p className="text-sm text-muted-foreground mt-2">
                 Built with React, TypeScript, and Tailwind CSS

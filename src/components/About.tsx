@@ -1,13 +1,13 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { Code, Server, Cloud, Palette, Award, Users } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import { motion } from 'framer-motion';
+import { Award, Cloud, Code, Palette, Server, Users } from 'lucide-react';
+import React from 'react';
+import { useInView } from 'react-intersection-observer';
 
 const highlights = [
   {
     icon: Award,
-    title: '9+ Years Experience',
+    title: '7+ Years Experience',
     description: 'Extensive experience across multiple domains and technologies',
   },
   {
@@ -81,7 +81,7 @@ export const About: React.FC = () => {
   return (
     <section
       ref={ref}
-      className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"
+      className="py-5 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"
       id="about"
     >
       <motion.div
@@ -108,27 +108,28 @@ export const About: React.FC = () => {
             <div className="prose prose-lg dark:prose-invert max-w-none">
               <p className="text-lg text-muted-foreground leading-relaxed">
                 I'm <strong className="text-foreground">Nagendra Prasad G T</strong>, a
-                <strong className="text-foreground"> Full-Stack Developer & Technical Specialist</strong>
-                currently working at <strong className="text-primary">WarpDrive Tech Works</strong>
-                (Jun 2024 – Present, Bengaluru, Karnataka, India). With over
-                <strong className="text-accent"> nine years of experience</strong> in the software
-                industry, I bring expertise across backend services, modern frontends, cloud and DevOps
-                practices, and user-focused solution design.
+                <strong className="text-foreground"> Full‑Stack Developer & Technical Specialist </strong>
+                 at <strong className="text-primary">WarpDrive Tech Works</strong>
+                (Jun 2024 – Present, Bengaluru). With
+                <strong className="text-accent"> 7+ years of experience</strong> in the software
+                industry, I build secure, scalable, and user‑centric products across backend services,
+                modern frontends, cloud/DevOps, and platform engineering.
               </p>
 
               <p className="text-lg text-muted-foreground leading-relaxed">
-                I build <strong className="text-primary">efficient</strong>,
-                <strong className="text-accent"> secure</strong>, and
-                <strong className="text-primary-glow"> intuitive</strong> systems end-to-end — from
-                APIs and data models to responsive UIs and scalable cloud infrastructure. I'm currently
-                pursuing AI certifications and actively integrating AI into development workflows
-                to accelerate delivery and improve developer experience.
+                I work directly with <strong className="text-foreground">CEOs, COOs, and CTOs </strong>
+                to translate strategy into pragmatic technical roadmaps, de‑risk delivery, and align
+                architecture with business outcomes. I own systems end‑to‑end — from API and data modeling
+                to responsive UIs and cloud‑native infrastructure — with a strong focus on reliability,
+                performance, and security.
               </p>
 
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Previously, I delivered impactful software at ConnectSecure (CyberCNS) and KSRTC, working
-                across domains like automation, analytics, and platform engineering, while mentoring teams
-                and driving architectural decisions.
+                I'm pursuing AI certifications and actively embedding AI into engineering workflows to
+                accelerate delivery, improve developer experience, and raise quality. Previously at
+                ConnectSecure (CyberCNS) and KSRTC, I led initiatives in automation, analytics, and
+                platform engineering, mentored teams, and drove architectural decisions that improved
+                resilience and time‑to‑market.
               </p>
             </div>
 
@@ -192,7 +193,7 @@ export const About: React.FC = () => {
         </div>
 
         {/* Current Role Highlight */}
-        <motion.div variants={itemVariants}>
+        {/* <motion.div variants={itemVariants}>
           <Card className="bg-gradient-to-r from-primary/5 to-accent/5 border-primary/20">
             <CardContent className="p-8 text-center">
               <motion.div
@@ -213,7 +214,7 @@ export const About: React.FC = () => {
               </motion.div>
             </CardContent>
           </Card>
-        </motion.div>
+        </motion.div> */}
       </motion.div>
     </section>
   );

@@ -1,23 +1,23 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { 
-  Code2, 
-  Database, 
-  Cloud, 
-  Palette,
-  Server,
-  Globe,
-  GitBranch,
-  Layers,
-  Zap,
-  Settings,
-  BarChart3,
-  Shield
-} from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
-import { Badge } from '@/components/ui/badge';
+import { motion } from 'framer-motion';
+import {
+  BarChart3,
+  Cloud,
+  Code2,
+  Database,
+  GitBranch,
+  Globe,
+  Layers,
+  Palette,
+  Server,
+  Settings,
+  Shield,
+  Zap
+} from 'lucide-react';
+import React, { useState } from 'react';
+import { useInView } from 'react-intersection-observer';
 
 interface Skill {
   name: string;
@@ -212,7 +212,7 @@ export const EnhancedSkills: React.FC = () => {
   return (
     <section
       ref={ref}
-      className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"
+      className="py-5 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"
       id="skills"
     >
       <motion.div
@@ -378,7 +378,7 @@ export const EnhancedSkills: React.FC = () => {
           className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12"
         >
           {[
-            { label: 'Years Experience', value: '9+', icon: Zap },
+            { label: 'Years Experience', value: '7+', icon: Zap },
             { label: 'Technologies', value: '25+', icon: Layers },
             { label: 'Projects Completed', value: '50+', icon: BarChart3 },
             { label: 'Certifications', value: '10+', icon: Shield }

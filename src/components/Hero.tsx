@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ChevronDown, Github, Linkedin, Mail } from 'lucide-react';
+import { ChevronDown, Github, Linkedin, Mail, Zap, Layers, Users, Award } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useInView } from 'react-intersection-observer';
 import heroBackground from '@/assets/hero-background.jpg';
@@ -52,7 +52,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToSection }) => {
   return (
     <section
       ref={ref}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 sm:pt-28 md:pt-32 scroll-mt-24"
       style={{
         backgroundImage: `url(${heroBackground})`,
         backgroundSize: 'cover',
@@ -97,50 +97,153 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToSection }) => {
           className="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6"
           variants={itemVariants}
         >
-          <span className="block text-foreground mb-2">Hi, I'm</span>
-          <motion.span
-            className="block bg-gradient-primary bg-clip-text text-transparent"
-            whileHover={{ scale: 1.05 }}
-            transition={{ type: "spring", stiffness: 300 }}
-          >
-            Nagendra Prasad G T
-          </motion.span>
+          <span className="whitespace-nowrap">
+            <span className="text-foreground">Hi, I'm</span>{' '}
+            <motion.span
+              className="bg-gradient-primary bg-clip-text text-transparent"
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              Nagendra Prasad G T
+            </motion.span>
+          </span>
         </motion.h1>
 
-        {/* Subtitle */}
-        <motion.p
-          className="text-xl sm:text-2xl lg:text-3xl text-muted-foreground mb-8 leading-relaxed"
+        {/* Subtitle with subtle suspense + shimmer to invite exploration */}
+        <motion.div variants={itemVariants} className="mb-8">
+          <motion.p className="text-xl sm:text-2xl lg:text-3xl text-muted-foreground leading-relaxed">
+            Multi-disciplinary developer and technical specialist skilled in{' '}
+            {/* Animated, shimmering keywords */}
+            <motion.span
+              className="font-semibold bg-clip-text text-transparent"
+              style={{
+                backgroundImage:
+                  'linear-gradient(90deg, rgba(139,92,246,0.6), rgba(168,85,247,1), rgba(139,92,246,0.6))',
+                backgroundSize: '200% 100%'
+              }}
+              animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
+              transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+              whileHover={{ scale: 1.06 }}
+            >
+              backend
+            </motion.span>
+            {', '}
+            <motion.span
+              className="font-semibold bg-clip-text text-transparent"
+              style={{
+                backgroundImage:
+                  'linear-gradient(90deg, rgba(34,197,94,0.6), rgba(16,185,129,1), rgba(34,197,94,0.6))',
+                backgroundSize: '200% 100%'
+              }}
+              animate={{ backgroundPosition: ['100% 50%', '0% 50%', '100% 50%'] }}
+              transition={{ duration: 3.2, repeat: Infinity, ease: 'easeInOut' }}
+              whileHover={{ scale: 1.06 }}
+            >
+              frontend
+            </motion.span>
+            {', '}
+            <motion.span
+              className="font-semibold bg-clip-text text-transparent"
+              style={{
+                backgroundImage:
+                  'linear-gradient(90deg, rgba(59,130,246,0.6), rgba(99,102,241,1), rgba(59,130,246,0.6))',
+                backgroundSize: '200% 100%'
+              }}
+              animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
+              transition={{ duration: 3.4, repeat: Infinity, ease: 'easeInOut' }}
+              whileHover={{ scale: 1.06 }}
+            >
+              DevOps
+            </motion.span>
+            {' '}and{' '}
+            <motion.span
+              className="font-semibold bg-clip-text text-transparent"
+              style={{
+                backgroundImage:
+                  'linear-gradient(90deg, rgba(236,72,153,0.6), rgba(217,70,239,1), rgba(236,72,153,0.6))',
+                backgroundSize: '200% 100%'
+              }}
+              animate={{ backgroundPosition: ['100% 50%', '0% 50%', '100% 50%'] }}
+              transition={{ duration: 3.6, repeat: Infinity, ease: 'easeInOut' }}
+              whileHover={{ scale: 1.06 }}
+            >
+              design
+            </motion.span>
+          </motion.p>
+
+          {/* Underline sweep as a subtle cue to scroll */}
+          <motion.div
+            className="mt-2 h-0.5 w-full bg-gradient-to-r from-transparent via-primary/60 to-transparent rounded-full"
+            initial={{ scaleX: 0, opacity: 0.3 }}
+            animate={{ scaleX: 1, opacity: [0.3, 0.7, 0.3] }}
+            transition={{ duration: 1.2, ease: 'easeOut' }}
+            style={{ transformOrigin: 'left' }}
+          />
+        </motion.div>
+
+        {/* Value props to add weight and compel exploration */}
+        <motion.div
+          className="mb-8 grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-3xl mx-auto"
           variants={itemVariants}
         >
-          Multi-disciplinary developer and technical specialist skilled in{' '}
-          <motion.span
-            className="text-primary font-semibold"
-            whileHover={{ scale: 1.05 }}
+          <motion.div
+            className="flex items-center justify-center gap-2 rounded-xl bg-card/60 border border-border/60 px-4 py-3 backdrop-blur"
+            whileHover={{ y: -3 }}
           >
-            backend
-          </motion.span>
-          ,{' '}
-          <motion.span
-            className="text-accent font-semibold"
-            whileHover={{ scale: 1.05 }}
+            <Zap className="w-4 h-4 text-primary" />
+            <span className="text-sm text-foreground"><strong>Outcome‑driven</strong> delivery</span>
+          </motion.div>
+          <motion.div
+            className="flex items-center justify-center gap-2 rounded-xl bg-card/60 border border-border/60 px-4 py-3 backdrop-blur"
+            whileHover={{ y: -3 }}
           >
-            frontend
-          </motion.span>
-          ,{' '}
-          <motion.span
-            className="text-primary-glow font-semibold"
-            whileHover={{ scale: 1.05 }}
+            <Layers className="w-4 h-4 text-accent" />
+            <span className="text-sm text-foreground"><strong>End‑to‑end</strong> ownership</span>
+          </motion.div>
+          <motion.div
+            className="flex items-center justify-center gap-2 rounded-xl bg-card/60 border border-border/60 px-4 py-3 backdrop-blur"
+            whileHover={{ y: -3 }}
           >
-            DevOps
-          </motion.span>
-          {' '}and{' '}
-          <motion.span
-            className="text-accent-glow font-semibold"
-            whileHover={{ scale: 1.05 }}
-          >
-            design
-          </motion.span>
-        </motion.p>
+            <Award className="w-4 h-4 text-primary-glow" />
+            <span className="text-sm text-foreground"><strong>AI‑augmented</strong> workflows</span>
+          </motion.div>
+        </motion.div>
+
+        {/* Social proof / leadership trust line */}
+        <motion.div
+          className="mb-10 text-sm text-muted-foreground"
+          variants={itemVariants}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 10 }}
+          transition={{ duration: 0.6 }}
+        >
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 border border-primary/20">
+            <Users className="w-4 h-4 text-primary" />
+            Trusted partner to CEOs, COOs & CTOs — translating strategy into shipped products
+          </span>
+        </motion.div>
+
+        {/* Quick explore chips */}
+        <motion.div
+          className="flex flex-wrap gap-3 justify-center mb-12"
+          variants={itemVariants}
+        >
+          {[
+            { id: 'projects', label: 'See projects' },
+            { id: 'skills', label: 'Explore skills' },
+            { id: 'timeline', label: 'Career timeline' }
+          ].map((chip) => (
+            <motion.button
+              key={chip.id}
+              onClick={() => onScrollToSection(chip.id)}
+              className="px-4 py-2 text-sm rounded-full border border-border/60 bg-card/60 text-foreground hover:border-primary/40 hover:bg-primary/10 transition-colors"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              {chip.label}
+            </motion.button>
+          ))}
+        </motion.div>
 
         {/* CTA Buttons */}
         <motion.div

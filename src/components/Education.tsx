@@ -1,8 +1,8 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { GraduationCap, Award, Calendar, MapPin, BookOpen, Trophy } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import { motion } from 'framer-motion';
+import { Award, BookOpen, Calendar, GraduationCap, MapPin, Trophy } from 'lucide-react';
+import React from 'react';
+import { useInView } from 'react-intersection-observer';
 
 interface EducationItem {
   id: string;
@@ -103,7 +103,7 @@ export const Education: React.FC = () => {
   return (
     <section
       ref={ref}
-      className="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto"
+      className="py-5 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto"
       id="education"
     >
       <motion.div

@@ -1,25 +1,25 @@
-import React, { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { 
-  Mail,
-  Phone,
-  MapPin,
-  Github,
-  Linkedin,
-  Send,
-  MessageCircle,
+import {
+  AlertCircle,
   Calendar,
   CheckCircle,
-  AlertCircle,
-  User,
-  MessageSquare
+  Github,
+  Linkedin,
+  Mail,
+  MapPin,
+  MessageCircle,
+  MessageSquare,
+  Phone,
+  Send,
+  User
 } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Label } from '@/components/ui/label';
+import React, { useState } from 'react';
+import { useInView } from 'react-intersection-observer';
 
 interface ContactInfo {
   icon: typeof Mail;
@@ -40,8 +40,8 @@ const contactInfo: ContactInfo[] = [
   {
     icon: Phone,
     label: 'Phone',
-    value: '+91 XXXXX XXXXX',
-    href: 'tel:+91XXXXXXXXX',
+    value: '+91 82776 81217',
+    href: 'tel:+918277681217',
     color: 'text-green-500'
   },
   {
@@ -151,7 +151,7 @@ export const EnhancedContact: React.FC = () => {
   return (
     <section
       ref={ref}
-      className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"
+      className="py-5 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"
       id="contact"
     >
       <motion.div
