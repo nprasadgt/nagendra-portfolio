@@ -1,4 +1,4 @@
-import heroBackground from '@/assets/hero-background.jpg';
+import heroBackground from '../assets/hero-background.jpg';
 import { motion } from 'framer-motion';
 import { Award, ChevronDown, Github, Layers, Linkedin, Mail, Users, Zap } from 'lucide-react';
 import React from 'react';
