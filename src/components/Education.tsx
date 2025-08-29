@@ -1,4 +1,4 @@
-import { Card, CardContent } from '@/components/ui/card';
+import { Card, CardContent } from '../components/ui/card';
 import { motion } from 'framer-motion';
 import { Award, BookOpen, Calendar, GraduationCap, MapPin, Trophy } from 'lucide-react';
 import React from 'react';
